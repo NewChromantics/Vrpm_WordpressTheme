@@ -96,4 +96,11 @@
         
     });
 
+
+    /**
+     * Iframe
+     */
+    
+    $('.section iframe').wrap('<div class="iframe"></div>');
+
 })($);
