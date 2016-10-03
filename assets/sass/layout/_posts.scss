@@ -1,0 +1,113 @@
+.post--intro {
+    text-align: left;
+    @include resp-max($breakpoint-sm) {
+        margin-bottom: $base-spacing-unit;
+    }
+    .col:last-child & {
+        @include resp-max($breakpoint-sm) {
+            margin-bottom: 0;
+        }
+    }
+    a {
+        color: $base-colour;
+        &:hover {
+            color: $base-colour;
+            text-decoration: none;
+        }
+    }
+    .post__thumbnail {
+        @extend .is-fluid;
+        margin-bottom: $base-spacing-unit / 2;
+    }
+    .post__title {
+        @include font-size($base-font-size + 4);
+        margin-bottom: $base-spacing-unit / 6;
+    }
+    .post__date {
+        margin-bottom: 0;
+        font-style: italic;
+    }
+    &.post--intro--horizontal {
+        margin-bottom: $base-spacing-unit;
+        clear: both;
+        @include clearfix;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .post__thumbnail {
+            width: 25%;
+            float: left;
+            margin-right: $base-spacing-unit / 2;
+            margin-bottom: 0;
+        }
+        .post__title {
+            @include font-size($base-font-size + 1);
+            margin-top: -2px;
+            margin-bottom: 0;
+        }
+        .post__date {
+            @include font-size($base-font-size - 2);   
+        }
+    }
+}
+
+.post--excerpt {
+    text-align: left;
+    margin-bottom: $base-spacing-unit * 3;
+    a {
+        color: $base-colour;
+        &:hover {
+            color: $base-colour;
+            text-decoration: none;
+        }
+    }
+    .post__header,
+    .post__thumbnail {
+        margin-bottom: $base-spacing-unit / 1.5;
+    }
+    .post__header {
+        .post__title {
+            @include font-size($base-font-size + 12);
+            margin-bottom: $base-spacing-unit / 6;
+        }
+        .post__date {
+            margin-bottom: 0;
+            font-style: italic;
+        }
+    }
+    .post__thumbnail {
+        @extend .is-fluid;
+    }
+    .btn {
+        color: #fff;
+    }
+}
+
+.post--full {
+    margin-bottom: $base-spacing-unit * 4;
+    .post__header,
+    .post__thumbnail {
+        margin-bottom: $base-spacing-unit / 1.5;
+    }
+    .post__header {
+        .post__title {
+            @include font-size($base-font-size + 12);
+            margin-bottom: $base-spacing-unit / 6;
+        }
+        .post__date {
+            margin-bottom: 0;
+            font-style: italic;
+        }
+    }
+    .post__thumbnail {
+        @extend .is-fluid;
+    }
+}
+
+.team {
+    margin-bottom: $base-spacing-unit;
+    .team__image {
+        @extend .is-fluid;
+        margin-bottom: $base-spacing-unit / 2;
+    }
+}

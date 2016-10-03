@@ -1,0 +1,124 @@
+/**
+ * Blanket input styles for normalisation
+ */
+
+*:focus {
+    outline: 0;
+}
+
+input, 
+select, 
+textarea {
+    background-color: $base-background-colour;
+    border: solid 1px $base-colour;
+    border-radius: 0;
+    color: $base-colour;
+    line-height: ($base-spacing-unit * 1.5);
+    height: ($base-spacing-unit * 1.5);
+    padding: 0 ($base-spacing-unit / 2);
+    width: 100%;
+}
+
+input[type="checkbox"], 
+input[type="radio"] {
+    background: transparent;
+    border: 0;
+    line-height: normal;
+    height: auto;
+    width: auto;
+}
+
+input[type="file"] {
+    line-height: normal;
+    height: auto;
+    padding: ($base-spacing-unit / 4) ($base-spacing-unit / 2);
+}
+
+input[type="submit"] {
+    -webkit-border-radius: 0; 
+    border-radius: 0;
+}
+
+input[disabled] {
+    background-color: whitesmoke;
+    cursor: not-allowed;
+}
+
+select {
+    line-height: normal;
+    padding: 0;
+    padding-left: ($base-spacing-unit / 2);
+}
+
+textarea {
+    min-height: ($base-spacing-unit * 4);
+    overflow: auto;
+    vertical-align: top;
+    resize: vertical;
+}
+
+
+/**
+ * Form utility classes
+ */
+
+.form--newsletter {
+    @include clearfix;
+    .form__group,
+    .form__submit {
+        float: left;
+    }
+    .form__group {
+        width: calc(85% - #{$base-spacing-unit / 2});
+        margin-right: $base-spacing-unit / 2;
+        position: relative;
+        &:before {
+            content: '\f003';
+            font-family: FontAwesome;
+            display: inline-block;
+            line-height: 40px;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+        }
+        .form__input {
+            border: 0;
+            border-bottom: 1px solid $base-colour;
+            line-height: 40px;
+            height: 40px;
+            padding-left: 40px;
+            background-color: transparent;
+            color: $base-colour;
+        }
+    }
+    .form__submit {
+        width: 15%;
+        line-height: 40px;
+        height: 40px;
+        padding: 0;
+    }
+    div.mce_inline_error {
+        background-color: transparent !important;
+        padding: 0 !important;
+        margin: ($base-spacing-unit / 2) 0 0 0 !important;
+        color: $danger-colour !important;
+        text-align: left;
+        font-weight: 400 !important;
+    }
+    #mce-responses {
+        clear: both;
+        text-align: left;
+        font-weight: 400;
+        @include clearfix;
+        .response {
+            margin-top: $base-spacing-unit / 2;
+        }
+        #mce-error-response {
+            color: $danger-colour;
+        }
+        #mce-success-response {
+            color: $success-colour;
+        }
+    }
+}
