@@ -103,4 +103,11 @@
     
     $('.section iframe').wrap('<div class="iframe"></div>');
 
+
+    /**
+     * Form validations
+     */
+
+    $('.form--contact').validate();
+
 })($);

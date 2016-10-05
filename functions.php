@@ -97,28 +97,6 @@ function barebones_nav_menu_args( $args = '' )
 add_filter( 'wp_nav_menu_args', 'barebones_nav_menu_args' );
 
 
-
-/**
- * Email
- */
-
-function barebones_mail_from( $email )
-{
-    return get_option( 'admin_email' );
-}
-
-add_filter( 'wp_mail_from', 'barebones_mail_from' );
-
-
-function barebones_mail_from_name( $name )
-{
-    return get_bloginfo( 'name' );
-}
-
-add_filter( 'wp_mail_from_name', 'barebones_mail_from_name' );
-
-
-
 /**
  * Shortcodes ([button] shortcode included)
  */
@@ -310,4 +288,34 @@ function my_theme_tooltip_register_tinymce_plugin( $buttons )
 {
     array_push( $buttons, 'ttip_shortcode_button' );
     return $buttons;
+}
+
+
+/**
+ * Contact form
+ */
+
+function submit_contact_form()
+{
+    $name = sanitize_text_field( $_POST['contact_name'] );
+    $email = sanitize_text_field( $_POST['contact_email'] );
+    $telephone = sanitize_text_field( $_POST['contact_telephone'] );
+    $message = sanitize_text_field( $_POST['contact_message'] );
+
+    $to      = 'info@vrpm.co.uk';
+    $headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
+    $headers .= 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-Type: text/html; charset=UTF-8' . "\r\n";
+    $subject = 'Website message - ' . $name;
+    $message = '<strong>Name</strong> ' . $name . '<br />' .
+               '<strong>Email</strong> ' . $email . '<br />' .
+               '<strong>Telephone</strong> ' . $telephone . '<br />' .
+               '<strong>Message</strong> ' . $message;
+
+    //
+    wp_mail( $to, $subject, $message, $headers );
+
+    //
+    wp_redirect( get_permalink( $post->ID ) . '?message=success' );
+    exit;
 }

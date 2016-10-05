@@ -122,3 +122,45 @@ textarea {
         }
     }
 }
+
+.form--contact {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    .form__group {
+        margin-bottom: $base-spacing-unit / 2;
+        @include clearfix;
+        .form__label,
+        .form__input {
+            display:  block;
+            float: left;
+        }
+        .form__label {
+            margin-bottom: $base-spacing-unit / 4;
+            width: 33.3333%;
+            font-weight: bold;
+            &.form__label--required {
+                &:after {
+                    content: '*';
+                    color: $danger-colour;
+                    margin-left: $base-spacing-unit / 8;
+                }
+            }
+        }
+        .form__input {
+            width: 66.6666%;
+            background-color: transparent;
+        }
+        label.error {
+            color: $danger-colour;
+            padding-top: $base-spacing-unit / 4;
+            font-weight: bold;
+            padding-left: 33.3333%;
+            @include font-size($base-font-size - 2);
+        }
+    }
+    .form__actions {
+        text-align: left;
+        padding-left: 33.3333%;
+    }
+}

@@ -13,6 +13,7 @@ elixir(function(mix) {
             'vendor/uevent.min.js',
             'vendor/doT.min.js',
             'vendor/photo-sphere-viewer.min.js',
+            'vendor/jquery.validate.js',
             'script.js'
         ], 'js/script.min.js');
 });

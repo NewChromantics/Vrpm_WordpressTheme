@@ -3,6 +3,11 @@
     $banner_media_type = get_field( 'banner_media_type' );
     $team = get_field( 'team' );
 
+    if ( $_POST['contact_email'] )
+    {
+        submit_contact_form();
+    }
+
     get_header(); 
 
 ?>
@@ -83,7 +88,7 @@
 
     <?php if ( $team ) : ?>
 
-        <section class="section">
+        <section class="section section--default">
             <div class="container">
                 <h2 class="push-bottom-2x">Meet the team</h2>
                 <div class="row row--double">
@@ -99,6 +104,38 @@
             </div>
         </section>
 
+    <?php endif; ?>
+
+    <?php if ( is_page( 'contact' ) ) : ?>
+        <section class="section section--default">
+            <div class="container">
+                <?php if ( isset( $_GET ) && $_GET['message'] == 'success' ) : ?>
+                    <p>Your message has been sent. We will get back to you as soon as possible. Thanks!</p>
+                <?php else : ?>
+                    <form action="<?php echo get_the_permalink( $post->ID ); ?>" method="POST" class="form form--contact">
+                        <div class="form__group">
+                            <label for="contact_name" class="form__label form__label--required">Name</label>
+                            <input type="text" name="contact_name" id="contact_name" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="contact_email" class="form__label form__label--required">Email</label>
+                            <input type="email" name="contact_email" id="contact_email" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="contact_telephone" class="form__label">Telephone</label>
+                            <input type="text" name="contact_telephone" id="contact_telephone" class="form__input">
+                        </div>
+                        <div class="form__group">
+                            <label for="contact_message" class="form__label form__label--required">Message</label>
+                            <textarea name="contact_message" id="contact_message" class="form__input" required></textarea>
+                        </div>
+                        <div class="form__actions">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                    </form>
+                <?php endif; ?>
+            </div>
+        </section>
     <?php endif; ?>
 
     <?php get_template_part( 'partials/section', 'newsletter' ); ?>
