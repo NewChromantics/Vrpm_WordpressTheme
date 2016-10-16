@@ -319,3 +319,19 @@ function submit_contact_form()
     wp_redirect( get_permalink( $post->ID ) . '?message=success' );
     exit;
 }
+
+
+/**
+ * Widgets
+ */
+
+register_sidebar([
+    'id'            => 'footer',
+    'name'          => 'Footer',
+    'description'   => '',
+    'class'         => '',
+    'before_widget' => '',
+    'after_widget'  => '',
+    'before_title'  => '',
+    'after_title'   => ''
+]);
